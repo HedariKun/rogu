@@ -37,8 +37,8 @@ the result of the above code is
 [ERROR][main.go:9 - main][2023-09-05 10:22:05 Tue]: this is an Error message
 [WARN][main.go:10 - main][2023-09-05 10:22:05 Tue]: this is a Warning message
 ```
-[!NOTE]
-By default showing log stack and current date is on by default but you can change this behavior
+> [!NOTE]
+> By default showing log stack and current date is on by default but you can change this behavior
 
 it supports creating some custom made tags for the logging like in the following example
 ```go
