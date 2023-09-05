@@ -1,11 +1,11 @@
 package rogu
 
 type Options struct {
-	EnableDate bool
-	EnableLog bool
-	EnableError bool
+	EnableDate    bool
+	EnableLog     bool
+	EnableError   bool
 	EnableWarning bool
-	EnableStack bool
+	EnableStack   bool
 }
 
 func DefaultOptions() Options {

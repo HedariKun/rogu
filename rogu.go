@@ -10,15 +10,15 @@ import (
 type LogFunction func(msg string)
 
 type Rogu struct {
-	Out io.Writer
+	Out     io.Writer
 	Options Options
-	log LogFunction
-	error LogFunction
-	warn LogFunction
+	log     LogFunction
+	error   LogFunction
+	warn    LogFunction
 }
 
 func New() *Rogu {
-	rogu := Rogu{} 
+	rogu := Rogu{}
 	rogu.Out = os.Stdout
 	rogu.Options = DefaultOptions()
 
@@ -41,18 +41,18 @@ func (r *Rogu) Logger(logType string) LogFunction {
 		if r.Options.EnableStack {
 			s := NewStack(debug.Stack())
 			info := s.GetInfo()
-			if(len(info) <= 4) {
+			if len(info) <= 4 {
 				r.BasicError("was not able to get stack info")
 				r.BasicError("the log message that was suppose to print is: " + message)
 				return
 			}
 			curLine := info[3]
-			msg += "[" + curLine.GetFileName() + ":" + curLine.GetLineNumber() +  " - " + curLine.GetFuncName() + "]"
+			msg += "[" + curLine.GetFileName() + ":" + curLine.GetLineNumber() + " - " + curLine.GetFuncName() + "]"
 		}
 		if r.Options.EnableDate {
 			msg += "[" + r.GetDate() + "]"
 		}
-		
+
 		msg += ": " + message + "\n"
 		r.Out.Write([]byte(msg))
 	}
